@@ -16,11 +16,10 @@ import { Button } from "@/components/primitives/Button";
 import { SearchBox } from "@/components/forms/SearchBox";
 import { FilterListbox } from "@/components/forms/FilterListbox";
 import { FilterBar } from "@/components/composites/FilterBar";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { relativeTime, truncate } from "@/lib/utils/format";
-
-// ── Page ──────────────────────────────────────────────────────────────────
 
 export default function SessionsPage() {
   const router = useRouter();
@@ -123,8 +122,7 @@ export default function SessionsPage() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        title="Sessions"
-        description="Agent sessions keyed by (project, agent, task) with parent hierarchy."
+        title={<ExpandableTitle pageKey="sessions" baseTitle="Sessions" />}
         actions={
           sessions ? (
             <Badge variant="info" size="md">

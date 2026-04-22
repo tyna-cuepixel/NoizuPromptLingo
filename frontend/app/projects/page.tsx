@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import useSWR from "swr";
 import { FolderIcon } from "@heroicons/react/24/outline";
@@ -8,6 +9,7 @@ import { api } from "@/lib/api/client";
 import { Card } from "@/components/primitives/Card";
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { EmptyState } from "@/components/primitives/EmptyState";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -24,10 +26,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="space-y-8">
-      <PageHeader
-        title="Projects"
-        description="NPL MCP projects with their personas and user stories."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="projects" baseTitle="Projects" />} />
 
       {isLoading && (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

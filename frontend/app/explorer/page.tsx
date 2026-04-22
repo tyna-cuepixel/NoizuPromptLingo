@@ -17,6 +17,7 @@ import type { FileTreeNode } from "@/lib/api/types";
 import { CodeBlock } from "@/components/primitives/CodeBlock";
 import { EmptyState } from "@/components/primitives/EmptyState";
 import { PageHeader } from "@/components/primitives/PageHeader";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 // ── Tree node component ───────────────────────────────────────────────────
 
@@ -232,10 +233,7 @@ function ExplorerContent() {
 export default function ExplorerPage() {
   return (
     <div className="flex flex-col gap-6 h-full">
-      <PageHeader
-        title="Project Explorer"
-        description="Browse the repository file tree."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="explorer" baseTitle="Project Explorer" />} />
       <Suspense
         fallback={
           <div className="h-64 rounded-lg bg-surface-1 border border-border animate-pulse" />

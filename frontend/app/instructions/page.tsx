@@ -18,6 +18,7 @@ import { Segmented } from "@/components/primitives/Segmented";
 import { SkeletonGrid } from "@/components/primitives/SkeletonGrid";
 import { SearchBox } from "@/components/forms/SearchBox";
 import { FilterBar } from "@/components/composites/FilterBar";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 import { relativeTime } from "@/lib/utils/format";
 
@@ -121,10 +122,7 @@ export default function InstructionsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader
-        title="Instructions"
-        description="Versioned instruction documents with text and intent search."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="instructions" baseTitle="Instructions" />} />
 
       {/* Search + mode toggle (row 1) + tag cloud (row 2) */}
       <FilterBar

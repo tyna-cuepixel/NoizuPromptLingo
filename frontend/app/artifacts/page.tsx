@@ -14,6 +14,7 @@ import type { Artifact, ArtifactKind } from "@/lib/api/types";
 import { Card } from "@/components/primitives/Card";
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { EmptyState } from "@/components/primitives/EmptyState";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import { Badge } from "@/components/primitives/Badge";
 import type { BadgeProps } from "@/components/primitives/Badge";
 import { Button } from "@/components/primitives/Button";
@@ -213,8 +214,7 @@ export default function ArtifactsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Artifacts"
-        description="Versioned text artifacts (PRD-002 MVP). Each artifact has a history of revisions."
+        title={<ExpandableTitle pageKey="artifacts" baseTitle="Artifacts" />}
         actions={<NewArtifactForm onCreated={() => mutate()} />}
       />
 

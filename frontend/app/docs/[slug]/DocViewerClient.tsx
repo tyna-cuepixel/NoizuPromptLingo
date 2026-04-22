@@ -7,14 +7,22 @@ import { api } from "@/lib/api/client";
 import { Card } from "@/components/primitives/Card";
 import { DetailHeader } from "@/components/composites/DetailHeader";
 import { Badge } from "@/components/primitives/Badge";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 type DocSlug = "schema" | "arch" | "layout" | "status";
 
 const SLUG_TITLES: Record<DocSlug, string> = {
-  schema: "Database Schema Documentation",
-  arch: "Architecture Documentation",
-  layout: "Project Layout Documentation",
+  schema: "Database Schema",
+  arch: "Architecture",
+  layout: "Project Layout",
   status: "Project Status",
+};
+
+const SLUG_PAGE_KEYS: Record<DocSlug, string> = {
+  schema: "doc_schema",
+  arch: "doc_arch",
+  layout: "doc_layout",
+  status: "",
 };
 
 function isValidSlug(s: string): s is DocSlug {
@@ -50,6 +58,9 @@ export function DocViewerClient() {
 
   const title = isValidSlug(slug) ? SLUG_TITLES[slug] : slug;
 
+  const pageKey = isValidSlug(slug) ? SLUG_PAGE_KEYS[slug] : "";
+  const showExpandable = pageKey !== "";
+
   return (
     <div className="space-y-6">
       <DetailHeader
@@ -57,7 +68,13 @@ export function DocViewerClient() {
           { label: "Docs" },
           { label: title },
         ]}
-        title={title}
+        title={
+          showExpandable ? (
+            <ExpandableTitle pageKey={pageKey} baseTitle={title} />
+          ) : (
+            title
+          )
+        }
         description={path ? `Source: ${path}` : undefined}
         actions={
           <Badge variant="info" size="sm">

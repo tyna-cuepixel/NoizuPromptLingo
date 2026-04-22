@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import useSWR from "swr";
 import clsx from "clsx";
 import {
@@ -20,6 +21,7 @@ import type { HealthReport, SubsystemHealth } from "@/lib/api/types";
 import { Card } from "@/components/primitives/Card";
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { Badge } from "@/components/primitives/Badge";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import type { BadgeProps } from "@/components/primitives/Badge";
 import { Button } from "@/components/primitives/Button";
 import { SkeletonGrid } from "@/components/primitives/SkeletonGrid";
@@ -144,8 +146,7 @@ export default function HealthPage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="System Health"
-        description="Live status of server, database, LLM proxy, catalog, and frontend build. Polls every 5s."
+        title={<ExpandableTitle pageKey="health" baseTitle="System Health" />}
         actions={
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-xs">

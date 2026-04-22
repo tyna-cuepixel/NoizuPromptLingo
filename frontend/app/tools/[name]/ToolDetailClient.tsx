@@ -18,6 +18,8 @@ import { Input } from "@/components/primitives/Input";
 import { Textarea } from "@/components/primitives/Textarea";
 import { FormField } from "@/components/primitives/FormField";
 import { DetailHeader } from "@/components/composites/DetailHeader";
+import { DescriptionContent } from "@/components/composites/ExpandablePageDescription";
+import { PAGE_DESCRIPTIONS } from "@/lib/config/page-descriptions";
 
 // ── Param input ───────────────────────────────────────────────────────────
 
@@ -263,6 +265,34 @@ function TryItPanel({
 
 // ── Main client component ─────────────────────────────────────────────────
 
+// ── Expandable Title Component for tool detail page ────────────────────────
+
+function ToolDetailExpandableTitle({ toolName }: { toolName: string }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const config = PAGE_DESCRIPTIONS.tool_detail;
+
+  return (
+    <>
+      <div className="flex items-center gap-2">
+        <span>{toolName}</span>
+        <button
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-sm text-accent hover:text-accent/80 transition-colors focus:outline-none focus:underline"
+          aria-expanded={isExpanded}
+        >
+          {isExpanded ? "Show less" : "Learn more"}
+        </button>
+      </div>
+      {isExpanded && config && (
+        <div className="rounded-lg border border-border bg-surface-1 px-4 py-4 mt-4">
+          <DescriptionContent config={config} />
+        </div>
+      )}
+    </>
+  );
+}
+
 export function ToolDetailClient() {
   const params = useParams();
   const rawName = params?.name;
@@ -349,7 +379,7 @@ export function ToolDetailClient() {
         ]}
         backHref="/tools"
         backLabel="Back to tools"
-        title={tool.name}
+        title={<ToolDetailExpandableTitle toolName={tool.name} />}
         description={tool.description}
         actions={
           <div className="flex flex-wrap items-center gap-2">

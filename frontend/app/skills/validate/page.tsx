@@ -21,6 +21,7 @@ import type {
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { Card } from "@/components/primitives/Card";
 import { Segmented } from "@/components/primitives/Segmented";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 // ── Example template ──────────────────────────────────────────────────────
 
@@ -330,8 +331,7 @@ export default function SkillValidatePage() {
   return (
     <div className="flex flex-col gap-6 p-6 max-w-6xl mx-auto">
       <PageHeader
-        title="Skill Validator"
-        description="Check schema validity or evaluate overall quality of a skill file."
+        title={<ExpandableTitle pageKey="skill_validator" baseTitle="Skill Validator" />}
         actions={
           <button
             type="button"

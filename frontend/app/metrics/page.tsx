@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import useSWR from "swr";
 import { api } from "@/lib/api/client";
 import type { ToolCall, LLMCall, ToolError, NPLSectionCoverage } from "@/lib/api/types";
@@ -7,6 +8,7 @@ import { Card } from "@/components/primitives/Card";
 import { Badge } from "@/components/primitives/Badge";
 import { ComingSoonBanner } from "@/components/primitives/ComingSoonBanner";
 import { PageHeader } from "@/components/primitives/PageHeader";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import { DataTable } from "@/components/primitives/DataTable";
 import { TabBar, TabPanel } from "@/components/composites/TabBar";
 
@@ -297,10 +299,7 @@ export default function MetricsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader
-        title="Metrics"
-        description="Tool call history and LLM usage."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="metrics" baseTitle="Metrics" />} />
 
       {!tcLoading && !llmLoading && !(toolCalls?.length) && !(llmCalls?.length) && (
         <ComingSoonBanner description="Tool call and LLM metrics coming soon — provisioning in progress. Tool errors are live." />

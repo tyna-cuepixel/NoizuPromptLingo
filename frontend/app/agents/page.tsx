@@ -10,6 +10,7 @@ import type { AgentInfo } from "@/lib/api/types";
 import { Card } from "@/components/primitives/Card";
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { EmptyState } from "@/components/primitives/EmptyState";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import { Badge } from "@/components/primitives/Badge";
 import type { BadgeProps } from "@/components/primitives/Badge";
 import { SkeletonGrid } from "@/components/primitives/SkeletonGrid";
@@ -84,10 +85,7 @@ export default function AgentsPage() {
 
   return (
     <div className="space-y-8">
-      <PageHeader
-        title="Agents"
-        description="TDD pipeline agents and utility/executor agents defined in agents/*.md."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="agents" baseTitle="Agents" />} />
 
       <FilterBar
         search={

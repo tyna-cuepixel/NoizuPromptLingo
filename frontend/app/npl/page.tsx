@@ -15,6 +15,7 @@ import { PageHeader } from "@/components/primitives/PageHeader";
 import { Button } from "@/components/primitives/Button";
 import { Select } from "@/components/primitives/Select";
 import { FormField } from "@/components/primitives/FormField";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import type { NPLResponse } from "@/lib/api/types";
 
 // ── Quick-pick pills ─────────────────────────────────────────────────────
@@ -378,8 +379,7 @@ export default function NPLPlaygroundPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="NPL Playground"
-        description="Generate NPL snippets and full specs from the conventions directory."
+        title={<ExpandableTitle pageKey="npl_playground" baseTitle="NPL Playground" />}
         actions={
           <div className="flex items-center gap-3">
             <Link

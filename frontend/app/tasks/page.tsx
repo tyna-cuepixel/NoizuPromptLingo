@@ -23,6 +23,7 @@ import { FormField } from "@/components/primitives/FormField";
 import { SkeletonGrid } from "@/components/primitives/SkeletonGrid";
 import { FilterBar } from "@/components/composites/FilterBar";
 import { ListRow } from "@/components/composites/ListRow";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 const STATUSES: TaskStatus[] = ["pending", "in_progress", "blocked", "review", "done"];
 
@@ -229,8 +230,7 @@ export default function TasksPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="Tasks"
-        description="Flat work-item queue. Filter by status/assignee; flip status inline."
+        title={<ExpandableTitle pageKey="tasks" baseTitle="Tasks" />}
         actions={<NewTaskForm onCreated={() => mutate()} />}
       />
 

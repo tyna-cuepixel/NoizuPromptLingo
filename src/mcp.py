@@ -11,8 +11,20 @@ Run the server with:
 
 The SSE endpoint will be available at http://127.0.0.1:8765/sse.
 """
+import sys
+import os
 
-from fastmcp import FastMCP
+# Filter out the directory containing this file from sys.path to prevent
+# shadowing the legitimate 'mcp' package during fastmcp initialization.
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_original_path = sys.path[:]
+sys.path = [p for p in sys.path if os.path.abspath(p) != _current_dir]
+
+try:
+    from fastmcp import FastMCP
+finally:
+    # Restore the original path so other local imports still work
+    sys.path = _original_path
 import uvicorn
 
 

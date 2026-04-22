@@ -29,7 +29,7 @@ export interface DetailHeaderProps {
   backLabel?: string;
 
   /** Passed through to PageHeader. */
-  title: string;
+  title: ReactNode;
   description?: ReactNode;
   actions?: ReactNode;
 

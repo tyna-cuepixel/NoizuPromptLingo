@@ -10,6 +10,7 @@ import { CodeBlock } from "@/components/primitives/CodeBlock";
 import { Button } from "@/components/primitives/Button";
 import { Input } from "@/components/primitives/Input";
 import { FormField } from "@/components/primitives/FormField";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 // ── Page ──────────────────────────────────────────────────────────────────
 
@@ -47,10 +48,7 @@ export default function MarkdownConverterPage() {
 
   return (
     <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto">
-      <PageHeader
-        title="Markdown Converter"
-        description="Fetch a URL or local file and convert to Markdown."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="markdown_converter" baseTitle="Markdown Converter" />} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         {/* Left column: form */}

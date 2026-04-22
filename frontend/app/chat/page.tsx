@@ -8,6 +8,7 @@ import type { ChatRoom } from "@/lib/api/types";
 import { Card } from "@/components/primitives/Card";
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { Button } from "@/components/primitives/Button";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import { Input } from "@/components/primitives/Input";
 import { useToast } from "@/components/primitives/ToastContainer";
 import { relativeTime } from "@/lib/utils/format";
@@ -140,10 +141,7 @@ export default function ChatPage() {
       {...cyAttrs({ cy: "chat-page", cyScope: "chat" })}
     >
       <div className="flex items-start justify-between gap-4">
-        <PageHeader
-          title="Chat"
-          description="Collaborative chat rooms for agent coordination."
-        />
+        <PageHeader title={<ExpandableTitle pageKey="chat" baseTitle="Chat" />} />
         <div className="shrink-0 pt-1">
           <NewRoomForm onCreated={() => mutate()} />
         </div>

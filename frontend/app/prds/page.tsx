@@ -16,6 +16,7 @@ import { SkeletonGrid } from "@/components/primitives/SkeletonGrid";
 import { FilterBar } from "@/components/composites/FilterBar";
 import { SearchBox } from "@/components/forms/SearchBox";
 import { FilterListbox } from "@/components/forms/FilterListbox";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -92,10 +93,7 @@ export default function PRDsPage() {
 
   return (
     <div className="space-y-8">
-      <PageHeader
-        title="PRDs"
-        description="Product requirement documents."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="prds" baseTitle="PRDs" />} />
 
       <FilterBar
         search={

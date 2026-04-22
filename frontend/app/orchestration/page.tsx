@@ -10,6 +10,7 @@ import { Card } from "@/components/primitives/Card";
 import { Badge } from "@/components/primitives/Badge";
 import { ComingSoonBanner } from "@/components/primitives/ComingSoonBanner";
 import { PageHeader } from "@/components/primitives/PageHeader";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 import { DataTable } from "@/components/primitives/DataTable";
 import { useToast } from "@/components/primitives/ToastContainer";
 
@@ -196,10 +197,7 @@ const TABS = ["Pipelines", "Agents"];
 export default function OrchestrationPage() {
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader
-        title="Orchestration"
-        description="Pipeline execution and agent coordination."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="orchestration" baseTitle="Orchestration" />} />
 
       <ComingSoonBanner
         description="Pipeline execution pending. Agent list and pipeline runs shown for preview only."

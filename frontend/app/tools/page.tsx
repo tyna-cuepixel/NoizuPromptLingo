@@ -19,6 +19,7 @@ import { Button } from "@/components/primitives/Button";
 import { SearchBox } from "@/components/forms/SearchBox";
 import { FilterListbox } from "@/components/forms/FilterListbox";
 import { FilterBar } from "@/components/composites/FilterBar";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 // ── Category tree helpers ─────────────────────────────────────────────────
 
@@ -258,10 +259,7 @@ export default function ToolsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader
-        title="Tools Catalog"
-        description="Browse and explore all registered MCP tools."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="tools_catalog" baseTitle="Tools Catalog" />} />
 
       <div className="flex gap-6 items-start">
         {/* ── Category sidebar ─────────────────────────────────────────── */}

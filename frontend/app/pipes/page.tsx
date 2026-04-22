@@ -16,6 +16,7 @@ import { FormField } from "@/components/primitives/FormField";
 import { CodeBlock } from "@/components/primitives/CodeBlock";
 import { PageHeader } from "@/components/primitives/PageHeader";
 import { EmptyState } from "@/components/primitives/EmptyState";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 // ── Input tab ───────────────────────────────────────────────────────────
 
@@ -290,10 +291,7 @@ function OutputTab() {
 export default function PipesPage() {
   return (
     <div className="space-y-6">
-      <PageHeader
-        title="Agent Pipes"
-        description="Inter-agent structured messaging. Push data to targets (agents or groups) and pull incoming dashboards."
-      />
+      <PageHeader title={<ExpandableTitle pageKey="pipes" baseTitle="Agent Pipes" />} />
 
       <TabGroup>
         <TabList className="flex gap-1 rounded-lg bg-surface-1 border border-border p-1 w-fit">

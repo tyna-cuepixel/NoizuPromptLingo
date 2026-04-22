@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { heading, text } from "@/lib/ui/typography";
 
 export interface PageHeaderProps {
-  title: string;
+  title: ReactNode;
   description?: string;
   actions?: ReactNode;
   /**

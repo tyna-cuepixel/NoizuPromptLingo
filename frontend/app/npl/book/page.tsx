@@ -14,6 +14,7 @@ import { Card } from "@/components/primitives/Card";
 import { Badge } from "@/components/primitives/Badge";
 import { CodeBlock } from "@/components/primitives/CodeBlock";
 import { PageHeader } from "@/components/primitives/PageHeader";
+import { ExpandableTitle } from "@/components/composites/ExpandablePageDescription";
 
 const SECTIONS: string[] = [
   "syntax",
@@ -144,8 +145,7 @@ export default function NPLBookPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="NPL Book"
-        description="Browse the Noizu Prompt Lingua specification one section at a time. Each tab renders on open with default verbosity."
+        title={<ExpandableTitle pageKey="npl_book" baseTitle="NPL Book" />}
         actions={
           <div className="flex items-center gap-3">
             <Link
